@@ -77,12 +77,4 @@ php artisan serve
     ```c
         phpunit
     ```
-## Configuring subdomains
-<p>
-    <ul>
-        <li> To configure the subdomains for the libraries, you will need to set up a wildcard subdomain on your server.</li>
-        <li> In the case of Apache, you can do this by creating a virtual host with a ServerAlias of *.yourdomain.com.</li>
-        <li> In the case of Nginx, you can do this by creating a server block with a server_name of *.yourdomain.com.</li>
-        <li> Then, in your application's routing, you can use the Request facade's subdomain method to retrieve the current subdomain and use it to retrieve the appropriate library's records.</li>
-    </ul>
-</p>
+
