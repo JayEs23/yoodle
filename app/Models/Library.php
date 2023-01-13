@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class Library extends Model
 {
@@ -24,7 +25,12 @@ class Library extends Model
             if(!$library->subdomain){
                 $library->subdomain = Str::slug($library->name);
             }
+            $library->validate([
+                'subdomain' => Rule::unique('libraries')->ignore($library->id)
+            ]);
         });
+        
+        
     }
 
 

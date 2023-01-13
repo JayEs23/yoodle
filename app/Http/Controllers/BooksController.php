@@ -37,6 +37,9 @@ class BooksController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(!(auth()->user()->isAdmin() || auth()->user()->library->isSuperAdmin())){
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
         $book = Book::where('library_id', request()->library_id)->find($id);
         if (!$book) {
             return response()->json(['error' => 'This book does not belong to this library'], 401);
